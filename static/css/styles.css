@@ -6073,7 +6073,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #59da67 !important;
+  background-color: #1d1b21  !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -6083,7 +6083,7 @@ button.bg-primary:focus {
 }
 
 .bg-secondary {
-  background-color: #1d1b21 !important;
+  background-color: #17b84e  !important;
 }
 
 a.bg-secondary:hover, a.bg-secondary:focus,
@@ -10231,10 +10231,10 @@ form .row:first-child .floating-label-form-group {
 .footer {
   padding-top: 5rem;
   padding-bottom: 5rem;
-  background-color: #2c3e50;
+  background-color: #1d1b21;
   color: #fff;
 }
 
 .copyright {
-  background-color: #1a252f;
+  background-color: #59da67;
 }
