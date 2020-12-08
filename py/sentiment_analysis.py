@@ -6,7 +6,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 analysis = {}
 result = ''
-filename = "negative.txt"
+filename = "positive.txt"
 
 # Opening the file and storing its content into a variable
 with open(filename) as file_object:
