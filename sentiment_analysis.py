@@ -23,10 +23,7 @@ class ReviewAnalyser():
                     # Cleaning the text by removing punctuation
                     temp[0] = temp[0].translate(str.maketrans('', '', string.punctuation))
                     reviews.append(temp)
-        if len(reviews) > 0:
-            return reviews
-        elif len(reviews) <= 0:
-            return False
+        return reviews
 
     # Creating the sentiment analyser function
     def sentiment_analyse(self, list):
@@ -72,18 +69,3 @@ class ReviewAnalyser():
             }
             with open("sentiment.json", "w") as file_object:
                 json.dump(self.analysis, file_object)
-
-    # Calling the function
-    # sentiment_analyse(content)
-
-dict = {'records': [{'book': '1984', 'review': 'Fantastic read. I loved it.'},
-{'book': 'Yes Man', 'review': 'Boring read. Terrible book.'},
-{'book': 'Yes Man', 'review': 'I hate this book. The writing is bad.'},
-{'book': 'Yes Man', 'review': 'Awful. Worst book ever do not read at all.'},
-{'book': 'Yes Man', 'review': 'Disgusting. Horrible characters.'}]}
-term = "Yes Man"
-
-findareview = ReviewAnalyser()
-result = findareview.search(dict, term)
-findareview.sentiment_analyse(result)
-print(result)

@@ -1,6 +1,7 @@
 import requests
 import json
 from flask import Flask, render_template
+from sentiment_analysis import ReviewAnalyser
 
 app = Flask(__name__)
 
@@ -10,6 +11,10 @@ def index():
     json_data = req.content
     # Turns JSON into python dictionary
     book_dict = json.loads(json_data)
+    term = "Yes Man"
+    sentiment = ReviewAnalyser()
+    result = sentiment.search(book_dict, term)
+    sentiment.sentiment_analyse(result)
     return render_template("index.html")
 
 # @app.route('/review')
