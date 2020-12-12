@@ -1,12 +1,10 @@
 import string
 import json
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 analysis = {}
 result = ''
-filename = "positive.txt"
+filename = "negative.txt"
 
 # Opening the file and storing its content into a variable
 with open(filename) as file_object:
@@ -14,6 +12,27 @@ with open(filename) as file_object:
 
 # Cleaning the text by removing punctuation
 content = content.translate(str.maketrans('', '', string.punctuation))
+
+dict = {'records': [{'book': '1984', 'review': 'Fantastic read. I loved it.'},
+{'book': 'Yes Man', 'review': 'Boring read. Terrible book.'},
+{'book': 'Yes Man', 'review': 'I hate this book. The writing is bad.'},
+{'book': 'Yes Man', 'review': 'Awful. Worst book ever do not read at all.'}]}
+
+def search(books, item):
+    reviews = []
+    temp = []
+    for record in books['records']:
+        for key in record.keys():
+            if record[key].lower() == item.lower():
+                temp = list(record.values())
+                # Book name will always appear as first item, therefore
+                # removal is necessary using pop().
+                temp.pop(0)
+                reviews.append(temp)
+    if len(reviews) > 0:
+        return reviews
+    elif len(reviews) <= 0:
+        return False
 
 # Creating the sentiment analyser function
 def sentiment_analyse(text):
@@ -57,4 +76,8 @@ def sentiment_json(sentiment, points):
             json.dump(analysis, file_object)
 
 # Calling the function
-sentiment_analyse(content)
+# sentiment_analyse(content)
+
+term = "Táin"
+result = search(dict, term)
+print(result)
