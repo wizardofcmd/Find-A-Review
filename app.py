@@ -21,6 +21,14 @@ def index():
 @app.route('/process', methods=['POST'])
 def process():
     book_rq = request.form['rv']
-    print(book_rq)
-    print(type(book_rq))
-    return jsonify({"help":book_rq})
+    req = requests.get('https://findabookapp.herokuapp.com/api/book/read.php')
+    json_data = req.content
+    # Turns JSON into python dictionary
+    book_dict = json.loads(json_data)
+
+    sentiment = ReviewAnalyser()
+    result = sentiment.search(book_dict, book_rq)
+    if result:
+        sentiment.sentiment_analyse(result)
+        return jsonify({"success":"true"})
+    return jsonify({"success":"false"})
