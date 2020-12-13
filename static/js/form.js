@@ -8,10 +8,8 @@ $(document).ready(function(){
             url : '/process'
         })
         .done(function(data){
-            console.log(data.success);
             if(data.success == "true"){
                 $("#notFound").hide();
-              console.log("sdfhosdahu");
               absolutelyDestroyCanvas();
               loadcanvas();
               insertData();
