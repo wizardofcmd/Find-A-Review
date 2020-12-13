@@ -1,16 +1,4 @@
-function loadcanvas() {
-  var canvas = document.createElement('canvas');
-  var div = document.getElementById('arbor')
-  canvas.id = "viewport";
-  canvas.width = "1108";
-  canvas.height = "688";
-  canvas.class = "model-content"
-  div.appendChild(canvas);
-}
-
-
-
-function insertData(){
+$(document).ready(function() {
   var sys = arbor.ParticleSystem(1000, 400, 1);
   sys.parameters({
     gravity: true
@@ -21,9 +9,11 @@ function insertData(){
 
 
   var neg, neu, pos, compound;
-  $.getJSON('/analysis', function(data) {
+  $.getJSON("../sentiment.json", function(data) {
 
-    sentiment = data.sentiment;
+
+
+    sentiment = JSON.stringify(data.sentiment);
     neg = JSON.stringify(data.points.neg);
     neu = JSON.stringify(data.points.neu);
     pos = JSON.stringify(data.points.pos);
@@ -97,4 +87,4 @@ function insertData(){
     console.log("No data has been submitted");
   });
 
-}
+});
