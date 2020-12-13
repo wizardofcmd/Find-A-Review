@@ -34,10 +34,11 @@ class ReviewAnalyser():
         points = SentimentIntensityAnalyzer().polarity_scores(list)
         neg = points['neg']
         pos = points['pos']
-        if neg > pos:
+        neu = points['neu']
+        if neg > pos and neg > neu:
             sentiment = "neg"
             self.sentiment_json(sentiment, points)
-        elif pos > neg:
+        elif pos > neg and pos > neu:
             sentiment = "pos"
             self.sentiment_json(sentiment, points)
         else:

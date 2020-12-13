@@ -32,8 +32,11 @@ function insertData(){
 
     if(sentiment == 'positive'){
       sentiment_col = "#9ce62a";
-    }else{
+  }else if (sentiment == 'negative'){
       sentiment_col = "#e70707"
+    }
+    else{
+        sentiment_col = "#f58742"
     }
     console.log(JSON.stringify("sentiment= "+sentiment));
     console.log(JSON.stringify("neg= "+neg));
