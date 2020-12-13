@@ -25,7 +25,7 @@ function insertData(){
   });
   sys.renderer = Renderer("#viewport");
   var sentiment;
-  var sentiment_col;
+  var sentiment_col, negcolor, poscolor;
 
 
   var neg, neu, pos, compound;
@@ -36,6 +36,19 @@ function insertData(){
     neu = JSON.stringify(data.points.neu);
     pos = JSON.stringify(data.points.pos);
     compound = JSON.stringify(data.points.compound);
+
+
+  if(neg <= '0.5'){
+    negcolor = "#e7070780";
+  } else if ( neg > '0.5' ){
+     negcolor = "#e70707";
+  }
+  if(pos <= '0.5'){
+     poscolor = "#9ce62a80";
+  } else if ( pos > '0.5' ){
+     poscolor = "#9ce62a";
+  }
+
 
 
     if(sentiment == 'positive'){
@@ -85,7 +98,7 @@ function insertData(){
     nodes['Negative'].label = "Negativity:";
     nodes['Negative'].neg = neg;
     nodes['Negative'].shape = "dot";
-    nodes['Negative'].color ="";
+    nodes['Negative'].color = negcolor;
 
     nodes['Neutral'].label = "Neutrality:";
     nodes['Neutral'].neu = neu;
@@ -94,11 +107,12 @@ function insertData(){
     nodes['Positive'].label = "Positivity:";
     nodes['Positive'].pos = pos;
     nodes['Positive'].shape = "dot";
-    nodes['Negative'].color ="";
+    nodes['Positive'].color = poscolor;
 
     nodes['Compound'].label = "Compound:";
     nodes['Compound'].compound = compound;
     nodes['Compound'].shape = "dot";
+    nodes['Compound'].color="yellow";
 
     Object.assign(b_data.nodes, nodes);
     Object.assign(b_data.edges, edges);
