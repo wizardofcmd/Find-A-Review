@@ -2,9 +2,9 @@ function loadcanvas() {
   var canvas = document.createElement('canvas');
   var div = document.getElementById('arbor');
   canvas.id = "viewport";
-  canvas.width = "1108";
+  canvas.width = "1000";
   canvas.height = "688";
-  canvas.class = "model-content"
+  canvas.class = "modal-content"
   div.appendChild(canvas);
 }
 
@@ -74,6 +74,7 @@ function insertData(){
     nodes['Negative'].label = "Negativity:";
     nodes['Negative'].neg = neg;
     nodes['Negative'].shape = "dot";
+    nodes['Negative'].color ="";
 
     nodes['Neutral'].label = "Neutrality:";
     nodes['Neutral'].neu = neu;
@@ -82,6 +83,7 @@ function insertData(){
     nodes['Positive'].label = "Positivity:";
     nodes['Positive'].pos = pos;
     nodes['Positive'].shape = "dot";
+    nodes['Negative'].color ="";
 
     nodes['Compound'].label = "Compound:";
     nodes['Compound'].compound = compound;
