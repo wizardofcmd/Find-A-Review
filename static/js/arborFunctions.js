@@ -8,7 +8,15 @@ function loadcanvas() {
   div.appendChild(canvas);
 }
 
-
+function createcanvas() {
+  var canvas = document.createElement('canvas');
+  var div = document.getElementById('arbor');
+  canvas.id = "viewport";
+  canvas.width = "0";
+  canvas.height = "0";
+  canvas.class = "modal-content"
+  div.appendChild(canvas);
+}
 
 function insertData(){
   var sys = arbor.ParticleSystem(1000, 400, 1);
