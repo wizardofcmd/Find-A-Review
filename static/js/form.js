@@ -7,7 +7,9 @@ $(document).ready(function(){
             url : '/process'
         })
         .done(function(data){
-            console.log(data)
+          console.log
+            loadcanvas();
+            insertData();
         });
 
         event.preventDefault();
