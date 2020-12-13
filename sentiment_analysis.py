@@ -7,10 +7,13 @@ class ReviewAnalyser():
     """Class containing methods to search for book reviews and analyse
     sentiment"""
 
+    # Constructor
     def __init__(self):
         self.analysis = {}
 
     def search(self, books, item):
+        """The search returns all the reviews existing for a book and
+        cleans up the data when loading it into variables."""
         reviews = []
         temp = []
         for record in books['records']:
@@ -31,10 +34,12 @@ class ReviewAnalyser():
         list = ' '.join(map(str, list))
         # Removing the [] and '' characters
         list = re.sub(r'[^A-Za-z0-9 ]+', '', list)
+        # Using VADER lexicon to analyse the reviews
         points = SentimentIntensityAnalyzer().polarity_scores(list)
         neg = points['neg']
         pos = points['pos']
         neu = points['neu']
+        # Calling sentiment_json method to export json file based on results
         if neg > pos and neg > neu:
             sentiment = "neg"
             self.sentiment_json(sentiment, points)
