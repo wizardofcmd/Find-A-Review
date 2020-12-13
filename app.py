@@ -35,6 +35,7 @@ def process():
 
 @app.route('/analysis', methods=['GET'])
 def analysis():
-    with open("sentiment.json", "w") as file_object:
-        data = json.load(file_object)
+    f = open('sentiment.json')
+    data = json.load(f)
+    f.close()
     return data

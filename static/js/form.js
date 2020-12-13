@@ -7,9 +7,13 @@ $(document).ready(function(){
             url : '/process'
         })
         .done(function(data){
-            console.log(data)
+            console.log(data.success);
+            if(data.success == "true"){
+              loadcanvas();
+              insertData();
+            }
         });
 
-        event.preventDefault();
+    
     });
 });
