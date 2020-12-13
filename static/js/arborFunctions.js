@@ -103,3 +103,7 @@ function insertData(){
   });
 
 }
+function absolutelyDestroyCanvas() {
+  var elem = document.getElementById("viewport");
+  elem.parentNode.removeChild(elem);
+}

@@ -9,11 +9,13 @@ $(document).ready(function(){
         .done(function(data){
             console.log(data.success);
             if(data.success == "true"){
+              console.log("sdfhosdahu");
+              absolutelyDestroyCanvas();
               loadcanvas();
               insertData();
             }
         });
 
-    
+
     });
 });
